@@ -7,3 +7,4 @@ gem 'faraday'
 gem 'i2c-bme280'
 
 gem 'uart'
+gem 'serialport'

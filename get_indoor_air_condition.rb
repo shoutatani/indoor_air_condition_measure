@@ -65,11 +65,12 @@ obj.upload_file(log_file_location)
 
 # push to all
 # POST 'application/x-www-form-urlencoded' content
-slack_url = 'https://hooks.slack.com/services/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'
+slack_url = ENV["SLACK_INDOOR_AIR_CANNEL"]
 # POST JSON content
 
 def notify_slack(slack_url, co2_concentration, temperature, pressure, humidity, time)
-  Faraday.post(
+  puts "faraday start"
+  result = Faraday.post(
     slack_url,
     {text: "
     *******************************************
@@ -81,6 +82,7 @@ def notify_slack(slack_url, co2_concentration, temperature, pressure, humidity, 
     "}.to_json,
     "Content-Type" => "application/json"
   )
+  puts "faraday end: #{result.inspect}"
 end
 
 notify_slack(slack_url, co2_concentration, temperature, pressure, humidity, now)
@@ -99,7 +101,7 @@ notify_slack(slack_url, co2_concentration, temperature, pressure, humidity, now)
 
 if co2_concentration >= 1000
   # POST 'application/x-www-form-urlencoded' content
-  slack_url = 'https://hooks.slack.com/services/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'
+  slack_url = ENV['SLACK_INDOOR_CO2_CANNEL']
 
   # POST JSON content
   resp = Faraday.post(
