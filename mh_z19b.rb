@@ -39,7 +39,7 @@ class Mh_z19b
     rescue => exception
       try_count += 1
       $stderr.puts "#{Time.now}: exception: #{exception}, try count: #{try_count}"
-      retry if try_count < 5
+      (sleep(1) && retry) if try_count < 7
     end
     {
       co2: response[2] * 256 + response[3],
