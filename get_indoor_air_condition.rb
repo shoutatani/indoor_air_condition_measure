@@ -90,7 +90,7 @@ class IndoorAirMeasure
   def upload_log_to_s3(log_file_name, log_file_path)
     s3 = Aws::S3::Resource.new(region: 'ap-northeast-1')
     s3_object_path = "log/indoor_environment/#{executed_time.year}/#{executed_time.strftime("%m")}/#{log_file_name}"
-    s3_object = s3.bucket('iot.tan-shio.com').object(s3_object_path)
+    s3_object = s3.bucket(ENV['S3_LOG_BUCKET']).object(s3_object_path)
     s3_object.upload_file(log_file_path)
   end
 
