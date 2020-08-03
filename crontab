@@ -1,1 +1,1 @@
-* * * * * /home/pi/develop/bme280/entry-point.sh
+* * * * * /bin/bash /home/pi/develop/indoor_air_condition_measure/entry-point.sh

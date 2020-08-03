@@ -2,8 +2,8 @@ require 'aws-sdk-s3'
 require "csv"
 require 'fileutils'
 require 'json'
-require './bme280'
-require './mh_z19b'
+require './lib/bme280'
+require './lib/mh_z19b'
 require 'faraday'
 
 class IndoorAirMeasure
